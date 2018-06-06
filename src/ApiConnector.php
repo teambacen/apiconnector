@@ -19,4 +19,7 @@ class ApiConnector
   public function run($method, $customPoint, $data = null){
     return $this->connector->run($method, $customPoint, $data);
   }
+  public function dir(){
+    return $this->connector->getRootDir();
+  }
 }
