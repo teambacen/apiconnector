@@ -1,0 +1,17 @@
+{
+    "name": "stefan/apiconnector",
+    "description": "api connector using curl",
+    "authors": [
+        {
+            "name": "Ridwan Abdullah",
+            "email": "ridwan@innoractive.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ApiConnector\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
