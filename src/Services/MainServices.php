@@ -23,7 +23,7 @@ class MainServices
     $this->apiVersion = '1.0';
   }
   public function getRootDir(){
-    return __DIR__.'/../../../../';
+    return __DIR__.'/../../../../../';
   }
   public function getEnv(){
     $env = new \Dotenv\Dotenv(self::getRootDir());
