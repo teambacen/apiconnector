@@ -45,6 +45,7 @@ class ConnectorService extends MainServices
     $output = curl_exec($ch);
     $err = curl_error($ch);
     curl_close($ch);
-    return $output;
+    $json = json_decode($output, true);
+    return $json;
   }
 }
