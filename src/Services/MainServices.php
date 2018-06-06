@@ -14,11 +14,11 @@ class MainServices
   public function __construct(){
     self::getEnv();
 
-    if (env('APP_ENV') == 'local') {
+    if ($_ENV['APP_ENV'] == 'local') {
       // code...
-      $this->host = env('API_URL_DEV');
+      $this->host = $_ENV['API_URL_DEV'];
     }else{
-      $this->host = env('API_URL_PRO');
+      $this->host = $_ENV['API_URL_PRO'];
     }
     $this->apiVersion = '1.0';
   }
