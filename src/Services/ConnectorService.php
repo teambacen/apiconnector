@@ -37,7 +37,7 @@ class ConnectorService extends MainServices
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($method));
       curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     }
-    if (isset(Cookie::get('jwt'))) {
+    if (Cookie::get('jwt')) {
       // code...
       curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'Authorization: Bearer '.Cookie::get('jwt')
