@@ -24,7 +24,7 @@ class ConnectorService extends MainServices
       setcookie('jwt', $request, time() + (86400 * 30), "/");
     }
     // return (string)$request;
-    echo $request;
+    // echo $request;
   }
   public function run($method, $point, $data = null){
     $ch = curl_init();
