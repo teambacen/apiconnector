@@ -19,12 +19,11 @@ class ConnectorService extends MainServices
   public function getToken($id){
     $data = array('secret' => urlencode(base64_encode($id)));
     // $this->token = $this->run('post', 'auth/token', $data);
-
+    $request = $this->run('post', 'auth/token', $data);
     if (!isset($_COOKIE["jwt"])) {
-      $request = $this->run('post', 'auth/token', $data);
       setcookie('jwt', $request, time() + (86400 * 30), "/");
     }
-
+    return $request;
   }
   public function run($method, $point, $data = null){
     $ch = curl_init();
