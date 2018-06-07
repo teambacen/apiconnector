@@ -20,9 +20,11 @@ class MainServices
     }else{
       $this->host = $_ENV['API_URL_PRO'];
     }
+    // $this->host = env('API_URL_DEV');
     $this->apiVersion = '1.0';
   }
   public function getRootDir(){
+    //ci have five n laravel 4
     return __DIR__.'/../../../../../';
   }
   public function getEnv(){

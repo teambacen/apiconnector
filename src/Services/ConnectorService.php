@@ -3,6 +3,7 @@
 namespace ApiConnector\Services;
 
 use ApiConnector\Services\MainServices;
+use Josantonius\Cookie\Cookie;
 
 class ConnectorService extends MainServices
 {
@@ -20,9 +21,11 @@ class ConnectorService extends MainServices
     $data = array('secret' => urlencode(base64_encode($id)));
     // $this->token = $this->run('post', 'auth/token', $data);
     $request = $this->run('post', 'auth/token', $data);
-    setcookie('jwt', $request, time() + (86400 * 30), "/");
+    // setcookie('jwt', $request, time() + (86400 * 30), "/");
+    Cookie::set('jwt', $request);
     // return (string)$request;
     // echo $request;
+    return $request;
   }
   public function run($method, $point, $data = null){
     $ch = curl_init();
@@ -37,13 +40,22 @@ class ConnectorService extends MainServices
     if (isset($_COOKIE["jwt"])) {
       // code...
       curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Authorization: Bearer '.$_COOKIE["jwt"]
+        'Authorization: Bearer '.Cookie::get('jwt');
       ));
     }
     $output = curl_exec($ch);
     $err = curl_error($ch);
     curl_close($ch);
     $json = json_decode($output, true);
-    return $json;
+    if ($err) {
+      return $err;
+    }else{
+      if ($point == 'auth/token') {
+        # code...
+        return $output;
+      }else{
+        return $json;
+      }
+    }
   }
 }
