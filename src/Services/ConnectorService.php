@@ -20,9 +20,7 @@ class ConnectorService extends MainServices
     $data = array('secret' => urlencode(base64_encode($id)));
     // $this->token = $this->run('post', 'auth/token', $data);
     $request = $this->run('post', 'auth/token', $data);
-    if (!isset($_COOKIE["jwt"])) {
-      setcookie('jwt', $request, time() + (86400 * 30), "/");
-    }
+    setcookie('jwt', $request, time() + (86400 * 30), "/");
     // return (string)$request;
     // echo $request;
   }
