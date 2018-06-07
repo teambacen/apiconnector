@@ -40,7 +40,7 @@ class ConnectorService extends MainServices
     if (isset($_COOKIE["jwt"])) {
       // code...
       curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Authorization: Bearer '.Cookie::get('jwt');
+        'Authorization: Bearer '.Cookie::get('jwt')
       ));
     }
     $output = curl_exec($ch);
